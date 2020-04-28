@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
     s.author = { 'test' => 'test@gmail.com' }
     
     # 5 - Replace this URL with your own GitHub page's URL (from the address bar)
-    s.homepage = 'https://github.com/PicupMobile/IOS.PicupSDKv3.git'
+    s.homepage = 'https://github.com/PicupMobile/IOS.PicupSDKv3'
     
     # 6 - Replace this URL with your own Git URL from "Quick Setup"
     s.source = { :git => 'https://github.com/PicupMobile/IOS.PicupSDKv3.git', :tag => s.version.to_s }
