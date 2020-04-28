@@ -6,7 +6,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-target 'PicUPSDK' do
+target 'PicUPSDKv3' do
   # Pods for PicUPSDK
   pod 'Alamofire', '~> 4.9'
 end

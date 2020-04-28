@@ -4,53 +4,53 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/PicUPSDK-Swift.h</key>
+		<key>Headers/PicUPSDKv3-Swift.h</key>
 		<data>
-		P+Zptf4XNHcI7N8VGIkv7l2MYgY=
+		rdJgHkxUcDJmKCfXE66vxIlT6B4=
 		</data>
-		<key>Headers/PicUPSDK.h</key>
+		<key>Headers/PicUPSDKv3.h</key>
 		<data>
 		NLoBct6/rSYQ+ClHSQwu9lzFy5o=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		mEyJ/a45YQ7QnXz+aQWbQOcoLxQ=
+		lOAN4rcLiTEPfjecIEw+nBncWQ8=
 		</data>
-		<key>Modules/PicUPSDK.swiftmodule/arm.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm.swiftdoc</key>
 		<data>
-		cCAyrcfec+fap/XeHEu/Gs0uFeI=
+		OWqzPNdBBsaNI5kDBF44/Rk4pdc=
 		</data>
-		<key>Modules/PicUPSDK.swiftmodule/arm.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm.swiftmodule</key>
 		<data>
-		lfCgs/EuS4zFbnXmUcXuSjy9L10=
+		DcbZcaXZiETYtf24FUe2HZ7wyyc=
 		</data>
-		<key>Modules/PicUPSDK.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		WGzri/Ex/DEoC2oO1dvdDLca0Pc=
+		7sX3hZTJowI85Zq/5PIAR5tFN7Y=
 		</data>
-		<key>Modules/PicUPSDK.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		JiuVSzrSdPBfmyXu6e+OR5MZ2CM=
+		8oUqwBDHlY10Qij3vAnCotzuVps=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		OYeqq9NDIKh+3KNDgO5d1iTeIj4=
+		PwIlbTeSyZOXvvAYHIG0jR63rZY=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/PicUPSDK-Swift.h</key>
+		<key>Headers/PicUPSDKv3-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			P+Zptf4XNHcI7N8VGIkv7l2MYgY=
+			rdJgHkxUcDJmKCfXE66vxIlT6B4=
 			</data>
 			<key>hash2</key>
 			<data>
-			IzidIKfrQhIL85mXdfX5UGWFOM1BVzycPqyct7V0XU8=
+			XveNN8hOVTsC9s5O6VMeZA6Pc5aAK/k0q8rFsdZb4NY=
 			</data>
 		</dict>
-		<key>Headers/PicUPSDK.h</key>
+		<key>Headers/PicUPSDKv3.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
@@ -61,59 +61,59 @@
 			sDvIoJpy/DTadtliibPsdKeGnjFxkrZn+2aEXNXiee4=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDK.swiftmodule/arm.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			cCAyrcfec+fap/XeHEu/Gs0uFeI=
+			OWqzPNdBBsaNI5kDBF44/Rk4pdc=
 			</data>
 			<key>hash2</key>
 			<data>
-			r60pn8+qw5iZyVDiWnc+13bAEfI/qyjdDcrx5OP0um4=
+			qfReS7SppZWhOf8TKpTLXjnf5lrjDUP6gPo9FkZ9xmY=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDK.swiftmodule/arm.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			lfCgs/EuS4zFbnXmUcXuSjy9L10=
+			DcbZcaXZiETYtf24FUe2HZ7wyyc=
 			</data>
 			<key>hash2</key>
 			<data>
-			9ZwBermcBN4IrdbVHslhUoI4bwyPlh1vdDsV2rgrQU4=
+			IO4qHKZXXdHEmejh1eGtDQkG1YF1a2Gt/iZM94pfkFU=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDK.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			WGzri/Ex/DEoC2oO1dvdDLca0Pc=
+			7sX3hZTJowI85Zq/5PIAR5tFN7Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			mMZ22h0guPFU/Of/2CDnwAYoNoY3LkFR8G/fuywFgVI=
+			/pE07U3QHa8gQ3953lDWV9zH+Yd/RUWDJgsUhb4qY1s=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDK.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JiuVSzrSdPBfmyXu6e+OR5MZ2CM=
+			8oUqwBDHlY10Qij3vAnCotzuVps=
 			</data>
 			<key>hash2</key>
 			<data>
-			tSZ5ExlSXKD6x0q4DOnudkiOtg8RXReSQaUT5dfiv2g=
+			/KXSiwoE2qLV7CDUdAo9rm4unZJB+BmvKzuZrCBxtGg=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			OYeqq9NDIKh+3KNDgO5d1iTeIj4=
+			PwIlbTeSyZOXvvAYHIG0jR63rZY=
 			</data>
 			<key>hash2</key>
 			<data>
-			BuoErMY1z2PxCROIPDpL8qSHRYI+O0TiS64d7MPKtZU=
+			YXlyEvrtn/AcNAIBvuj4Y6asR8H+HpOTUsT8wG3ryu8=
 			</data>
 		</dict>
 	</dict>

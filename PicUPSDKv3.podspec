@@ -28,9 +28,9 @@ Pod::Spec.new do |s|
     
     # 8
 #    s.source_files  = 'Sources/**/*.{swift}'
-    s.public_header_files = "SDKFramework/PicUPSDK.framework/Headers/*.h"
-    s.source_files = "SDKFramework/PicUPSDK.framework/Headers/*.h"
-    s.vendored_frameworks = "SDKFramework/PicUPSDK.framework"
+    s.public_header_files = "SDKFramework/PicUPSDKv3.framework/Headers/*.h"
+    s.source_files = "SDKFramework/PicUPSDKv3.framework/Headers/*.h"
+    s.vendored_frameworks = "SDKFramework/PicUPSDKv3.framework"
     
     # 9
 #    s.resources = "IOS.PicupSDK/**/*.{png,jpeg,jpg,storyboard,xib,xcassets}"
