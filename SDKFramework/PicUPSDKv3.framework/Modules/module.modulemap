@@ -4,8 +4,3 @@ framework module PicUPSDKv3 {
   export *
   module * { export * }
 }
-
-module PicUPSDKv3.Swift {
-    header "PicUPSDKv3-Swift.h"
-    requires objc
-}
