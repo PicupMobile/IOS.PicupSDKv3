@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/PicUPSDKv3-Swift.h</key>
 		<data>
-		bHuQttf8jicUAVExz6xBuh6BSew=
+		RM6Ydnn5sIsinSdBUXNM6C4jvoA=
 		</data>
 		<key>Headers/PicUPSDKv3.h</key>
 		<data>
@@ -14,31 +14,55 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		oBvLcmzWiT7WkN6LFKX661qA7UA=
+		LTNve8LygZwtdvRR+anXfhn7+m4=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/i386-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		HciJUr2SkQsMdaKCh5LRxWY6xBg=
+		sgZcDiRJnqR1WxlEOLm0YMuArLA=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/i386.swiftsourceinfo</key>
 		<data>
-		HciJUr2SkQsMdaKCh5LRxWY6xBg=
+		sgZcDiRJnqR1WxlEOLm0YMuArLA=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		67mqwT5MzYVcSk+/TnwPFuNDQbs=
+		JHHAKWPCxbCgUnEeVWQEZ7t0OgM=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<data>
-		ScTLPLjD+7Ls3AwBxNBsJayI0+c=
+		JHHAKWPCxbCgUnEeVWQEZ7t0OgM=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<data>
-		67mqwT5MzYVcSk+/TnwPFuNDQbs=
+		ghBisL8bjjbhmmcX1tjNBMvrO6U=
 		</data>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<data>
-		ScTLPLjD+7Ls3AwBxNBsJayI0+c=
+		ERAlP0IjCqit0BNuagj3kWdT0M4=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386.swiftdoc</key>
+		<data>
+		ghBisL8bjjbhmmcX1tjNBMvrO6U=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386.swiftmodule</key>
+		<data>
+		ERAlP0IjCqit0BNuagj3kWdT0M4=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<data>
+		QOJ+1W2hdRDoxbkb7XHchYHLKec=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<data>
+		IZ1zTroKLm4OIZ7WIi7OnIlCaYQ=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64.swiftdoc</key>
+		<data>
+		QOJ+1W2hdRDoxbkb7XHchYHLKec=
+		</data>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64.swiftmodule</key>
+		<data>
+		IZ1zTroKLm4OIZ7WIi7OnIlCaYQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -49,62 +73,164 @@
 	<dict>
 		<key>Headers/PicUPSDKv3-Swift.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			RM6Ydnn5sIsinSdBUXNM6C4jvoA=
+			</data>
 			<key>hash2</key>
 			<data>
-			wroFSoSV4pDLgY2fPwJclwQdNkdaPQB3+XPWHyKZUGA=
+			S/w0FeKu/8bkAOrjc4pqy2hvfmiepm2/EUnLFM8JxzQ=
 			</data>
 		</dict>
 		<key>Headers/PicUPSDKv3.h</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			NLoBct6/rSYQ+ClHSQwu9lzFy5o=
+			</data>
 			<key>hash2</key>
 			<data>
 			sDvIoJpy/DTadtliibPsdKeGnjFxkrZn+2aEXNXiee4=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/Project/arm64-apple-ios.swiftsourceinfo</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/i386-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			sgZcDiRJnqR1WxlEOLm0YMuArLA=
+			</data>
 			<key>hash2</key>
 			<data>
-			KD7eTYvXJ+xCPSXdMdT1VImVXkQdHpZNyach6fHXwe4=
+			1TVP6pDysn6gHkMKCkrWe3dHV+WyR0w2rjOgceBHi60=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/Project/arm64.swiftsourceinfo</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/i386.swiftsourceinfo</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			sgZcDiRJnqR1WxlEOLm0YMuArLA=
+			</data>
 			<key>hash2</key>
 			<data>
-			KD7eTYvXJ+xCPSXdMdT1VImVXkQdHpZNyach6fHXwe4=
+			1TVP6pDysn6gHkMKCkrWe3dHV+WyR0w2rjOgceBHi60=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64-apple-ios.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			JHHAKWPCxbCgUnEeVWQEZ7t0OgM=
+			</data>
 			<key>hash2</key>
 			<data>
-			7QP/jtBOND5cjRsc0UWG7iaFvvGi4VaihrBQbL7RhZs=
+			FUqQ1q8sn5Cg1F7Rv95/fxdWTOuyUmJW4jqK+pBySDo=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64-apple-ios.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/Project/x86_64.swiftsourceinfo</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			JHHAKWPCxbCgUnEeVWQEZ7t0OgM=
+			</data>
 			<key>hash2</key>
 			<data>
-			BvXD8HGlw5kqkLLukayMbZeMfXrSztr6R8o5uXYbaVg=
+			FUqQ1q8sn5Cg1F7Rv95/fxdWTOuyUmJW4jqK+pBySDo=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftdoc</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386-apple-ios-simulator.swiftdoc</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ghBisL8bjjbhmmcX1tjNBMvrO6U=
+			</data>
 			<key>hash2</key>
 			<data>
-			7QP/jtBOND5cjRsc0UWG7iaFvvGi4VaihrBQbL7RhZs=
+			n0EzTdEKEbhzdsTMHPOKifsJMWZ69EaCRrP+hZjAuQg=
 			</data>
 		</dict>
-		<key>Modules/PicUPSDKv3.swiftmodule/arm64.swiftmodule</key>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386-apple-ios-simulator.swiftmodule</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			ERAlP0IjCqit0BNuagj3kWdT0M4=
+			</data>
 			<key>hash2</key>
 			<data>
-			BvXD8HGlw5kqkLLukayMbZeMfXrSztr6R8o5uXYbaVg=
+			2DcX202r6XnUca7UicbXdL/aqqWqs67wfbDyOG+cCXM=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ghBisL8bjjbhmmcX1tjNBMvrO6U=
+			</data>
+			<key>hash2</key>
+			<data>
+			n0EzTdEKEbhzdsTMHPOKifsJMWZ69EaCRrP+hZjAuQg=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/i386.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			ERAlP0IjCqit0BNuagj3kWdT0M4=
+			</data>
+			<key>hash2</key>
+			<data>
+			2DcX202r6XnUca7UicbXdL/aqqWqs67wfbDyOG+cCXM=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QOJ+1W2hdRDoxbkb7XHchYHLKec=
+			</data>
+			<key>hash2</key>
+			<data>
+			LLZJUqEy3m88KpcpwyLDgtRMBbVcsSO6EWR/kuP+eNs=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IZ1zTroKLm4OIZ7WIi7OnIlCaYQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			QC7v3eN5cyWPFgf0ZaLaOeuTdBIP0S2/lEv/NYd+5uk=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64.swiftdoc</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			QOJ+1W2hdRDoxbkb7XHchYHLKec=
+			</data>
+			<key>hash2</key>
+			<data>
+			LLZJUqEy3m88KpcpwyLDgtRMBbVcsSO6EWR/kuP+eNs=
+			</data>
+		</dict>
+		<key>Modules/PicUPSDKv3.swiftmodule/x86_64.swiftmodule</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			IZ1zTroKLm4OIZ7WIi7OnIlCaYQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			QC7v3eN5cyWPFgf0ZaLaOeuTdBIP0S2/lEv/NYd+5uk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
+			<key>hash</key>
+			<data>
+			PwIlbTeSyZOXvvAYHIG0jR63rZY=
+			</data>
 			<key>hash2</key>
 			<data>
 			YXlyEvrtn/AcNAIBvuj4Y6asR8H+HpOTUsT8wG3ryu8=
