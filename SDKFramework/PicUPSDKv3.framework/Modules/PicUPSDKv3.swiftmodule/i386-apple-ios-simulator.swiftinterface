@@ -1,0 +1,179 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-module-flags: -target i386-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PicUPSDKv3
+import AddressBook
+import Alamofire
+import Contacts
+import CryptoSwift
+import Foundation
+@_exported import PicUPSDKv3
+import Swift
+import UIKit
+extension UIDevice {
+  public static let modelName: Swift.String
+}
+@objc @_inheritsConvenienceInitializers public class PicUpResult : ObjectiveC.NSObject {
+  public var errorNo: PicUPSDKv3.ErrorNo?
+  public var data: [Swift.String : Any]?
+  public var msg: Swift.String?
+  @objc deinit
+  @objc override dynamic public init()
+}
+@_hasMissingDesignatedInitializers open class NetworkService {
+  public typealias EmptyClosure = () -> Swift.Void
+  public typealias ErrorClosure = (Swift.Error?) -> Swift.Void
+  public typealias GenericCallback<T> = (T?, Swift.Error?) -> Swift.Void
+  public typealias ResponseCallback = PicUPSDKv3.NetworkService.GenericCallback<Any>
+  public static let shared: PicUPSDKv3.NetworkService
+  public func getSessionToken(_ securityCode: Swift.String, completion: PicUPSDKv3.NetworkService.ErrorClosure?)
+  public func registerClientDevice(phoneNumber: Swift.String, name: Swift.String = UIDevice.current.name, completion: PicUPSDKv3.NetworkService.GenericCallback<PicUPSDKv3.ClientDevice>?)
+  public func pullMessageData(status: Swift.String, completion: PicUPSDKv3.NetworkService.GenericCallback<PicUPSDKv3.MessageData>?)
+  public func sendCallbackData(messageFrom: Swift.String, fromDevice: Swift.String, toDevice: Swift.String, mode: Swift.String, status: Swift.String, completion: PicUPSDKv3.NetworkService.GenericCallback<PicUPSDKv3.GenericStatus>?)
+  public func getCampaignByPhoneNumber(outgoingPhoneNumber: Swift.String, completion: PicUPSDKv3.NetworkService.GenericCallback<PicUPSDKv3.GenericStatus>?)
+  public func respondTopic(fromDevice: Swift.String, status: Swift.String, completion: PicUPSDKv3.NetworkService.GenericCallback<PicUPSDKv3.GenericStatus>?)
+  @objc deinit
+}
+public struct ClientDevice : Swift.Codable {
+  public let status: PicUPSDKv3.Status?
+  public let organizationPhoneNumber: Swift.String?
+  public let pullMessageData: PicUPSDKv3.PullMessageData?
+  public let organizationDisplayName: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct PullMessageData : Swift.Codable {
+  public let organizationData: PicUPSDKv3.OrganizationData?
+  public let campaignsData: [PicUPSDKv3.CampaignsDatum]?
+  public let senderID: Swift.String?
+  public let campaignID: Swift.Int?
+  public let senderGUID: Swift.String?
+  public let messageType: Swift.String?
+  public let outgoingNumbersData: [PicUPSDKv3.OutgoingNumbersDatum]?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct CampaignsDatum : Swift.Codable {
+  public let campID: Swift.Int?
+  public let dispName: Swift.String?
+  public let id: Swift.Int?
+  public let backNumber: Swift.String?
+  public let msgFormat: Swift.String?
+  public let expireTime: Swift.String?
+  public let dispText: Swift.String?
+  public let imageURL: Swift.String?
+  public let imageDate: Swift.Int?
+  public let name: Swift.String?
+  public let screenConfig: Swift.Int?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct OrganizationData : Swift.Codable {
+  public let logoDate: Swift.Int?
+  public let logoURL: Swift.String?
+  public let phoneNumber: Swift.String?
+  public let disable: Swift.Int?
+  public let name: Swift.String?
+  public let contact: Swift.Int?
+  public let id: Swift.Int?
+  public let imageDate: Swift.Int?
+  public let dispName: Swift.String?
+  public let dispText: Swift.String?
+  public let imageURL: Swift.String?
+  public let orgCode: Swift.Int?
+  public let color2: Swift.String?
+  public let carrier: Swift.Int?
+  public let color1: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct OutgoingNumbersDatum : Swift.Codable {
+  public let number: Swift.String?
+  public let id: Swift.Int?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct MessageData : Swift.Codable {
+  public let pullMessageData: PicUPSDKv3.PullMessageData?
+  public let status: PicUPSDKv3.Status?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct SessionToken : Swift.Codable {
+  public let status: PicUPSDKv3.Status?
+  public let token: Swift.String?
+  public init(status: PicUPSDKv3.Status?, token: Swift.String?)
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct PCUSDKUser {
+  public var phoneNumber: Swift.String
+  public var name: Swift.String
+  public var token: Swift.String
+  public var appVersion: Swift.String?
+  public var sdkVersion: Swift.String
+  public var deviceName: Swift.String
+  public var deviceModel: Swift.String
+  public var osVersion: Swift.String
+  public var screenSize: Swift.String
+  public var screenDensity: Swift.String
+  public var mode: Swift.String
+  public var permission: Swift.String
+  public var serviceEnabled: Swift.String
+  public var organizationCode: Swift.String
+  public var serviceCode: Swift.String
+  public init(phoneNumber: Swift.String, name: Swift.String, token: Swift.String, organizationCode: Swift.String, serviceCode: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class PicUpSDK {
+  public static let shared: PicUPSDKv3.PicUpSDK
+  public func isServiceEnabled() -> Swift.Bool
+  public func enableService()
+  public func disableService()
+  public func clearData()
+  public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping (PicUPSDKv3.PicUpResult) -> Swift.Void)
+  @objc deinit
+}
+public struct Status : Swift.Codable {
+  public let msg: Swift.String?
+  public let code: Swift.String?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct GenericStatus : Swift.Codable {
+  public let status: PicUPSDKv3.Status?
+  public init(from decoder: Swift.Decoder) throws
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@_hasMissingDesignatedInitializers public class Encryption {
+  public static func encrypt(_ plainText: Swift.String) -> Swift.String?
+  public static func decrypt(_ encryptedText: Swift.String) -> Swift.String?
+  @objc deinit
+}
+public enum ErrorNo : Swift.String, Swift.CaseIterable {
+  case ENOTSUP
+  case EFAILED
+  case EABORTED
+  case ENOTFOUND
+  case EBUSY
+  case EAVAIL
+  case EFORMAT
+  case EWRITE
+  case EREAD
+  case ESTATE
+  case ESUCCESS
+  case ALREADY_REGISTERED
+  case NOT_SUPPORTED
+  case CUSTOM_MSG
+  case NO_INTERNET_CONNECTION
+  public typealias RawValue = Swift.String
+  public init?(rawValue: Swift.String)
+  public var rawValue: Swift.String {
+    get
+  }
+  public typealias AllCases = [PicUPSDKv3.ErrorNo]
+  public static var allCases: [PicUPSDKv3.ErrorNo] {
+    get
+  }
+}
+extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
+extension PicUPSDKv3.ErrorNo : Swift.Hashable {}
+extension PicUPSDKv3.ErrorNo : Swift.RawRepresentable {}
