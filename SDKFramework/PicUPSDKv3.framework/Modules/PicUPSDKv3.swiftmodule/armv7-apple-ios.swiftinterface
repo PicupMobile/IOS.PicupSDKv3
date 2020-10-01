@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.2.4 (swiftlang-1103.0.32.9 clang-1103.0.32.53)
+// swift-compiler-version: Apple Swift version 5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)
 // swift-module-flags: -target armv7-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PicUPSDKv3
 import AddressBook
 import Alamofire
@@ -12,14 +12,14 @@ import UIKit
 extension UIDevice {
   public static let modelName: Swift.String
 }
-@objc @_inheritsConvenienceInitializers public class PicUpResult : ObjectiveC.NSObject {
+@objc public class PicUpResult : ObjectiveC.NSObject {
   public var errorNo: PicUPSDKv3.ErrorNo?
   public var data: [Swift.String : Any]?
   public var msg: Swift.String?
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
-@_hasMissingDesignatedInitializers open class NetworkService {
+open class NetworkService {
   public typealias EmptyClosure = () -> Swift.Void
   public typealias ErrorClosure = (Swift.Error?) -> Swift.Void
   public typealias GenericCallback<T> = (T?, Swift.Error?) -> Swift.Void
@@ -123,7 +123,7 @@ public struct PCUSDKUser {
   public var serviceCode: Swift.String
   public init(phoneNumber: Swift.String, name: Swift.String, token: Swift.String, organizationCode: Swift.String, serviceCode: Swift.String)
 }
-@_hasMissingDesignatedInitializers public class PicUpSDK {
+public class PicUpSDK {
   public static let shared: PicUPSDKv3.PicUpSDK
   public func isServiceEnabled() -> Swift.Bool
   public func enableService()
@@ -143,7 +143,7 @@ public struct GenericStatus : Swift.Codable {
   public init(from decoder: Swift.Decoder) throws
   public func encode(to encoder: Swift.Encoder) throws
 }
-@_hasMissingDesignatedInitializers public class Encryption {
+public class Encryption {
   public static func encrypt(_ plainText: Swift.String) -> Swift.String?
   public static func decrypt(_ encryptedText: Swift.String) -> Swift.String?
   @objc deinit
