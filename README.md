@@ -23,7 +23,7 @@ Your app needs to have Contacts permission from the user, as described [here](ht
 
 ## Installation
 
-The recommended way to install Bugsee is using [CocoaPods](https://www.cocoapods.org/), but  you can also download and install manually.
+The recommended way to install Bugsee is using [CocoaPods](https://www.cocoapods.org/), but you can also download and install manually.
 
 ### CocoaPods
 
@@ -57,8 +57,8 @@ import PicUPSDKv3
 // ...
 
 PicUpSDK.shared.register(
-    userName,
-    clientPhoneNumber: userPhoneNumber,
+    clientName,
+    clientPhoneNumber: userPhoneNumber, // hashed - see below
     organizationCode: organizationCode, // from management console
     securityCode: securityCode, // from management console
     uuid: persistentUniqueString, // e.g. push token
@@ -67,6 +67,43 @@ PicUpSDK.shared.register(
     }
 )
 ```
+
+Arguments:
+
+* **`clientName`** String with name of the client organization.
+
+* **`clientPhoneNumber `** Hashed representation of the actual phone number. Used as an opaque identifier in the management console. To create the hash, you can use the code below.
+
+  For iOS 13 or later:
+
+  ```swift
+  import CryptoKit
+  
+  func hashedRepresentation(phoneNumber: String) -> String? {
+      guard let phoneNumberData = phoneNumber.data(using: .utf8) else { return nil }
+      let digest = SHA256.hash(data: phoneNumberData)
+      return Data(digest).base64EncodedString()
+  }
+  ```
+
+  For earlier versions of iOS you can use [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift):
+
+  ```swift
+  import CryptoSwift
+
+  func hashedRepresentation(phoneNumber: String) -> String? {
+      guard let phoneNumberData = phoneNumber.data(using: .utf8) else { return nil }
+      return phoneNumberData.sha256().base64EncodedString()
+  }
+  ```
+
+* **`organizationCode`** From the web management console.
+
+* **`securityCode`** From the web management console.
+
+* **`uuid`** Persistent unique string, like firebase token or `UIDevice.current.identifierForVendor?.uuidString`.
+
+* **`completion`** Called when the registration is complete, with a `PicUpResult` parameter that contains optional error data.
 
 ## Optional Usage
 
