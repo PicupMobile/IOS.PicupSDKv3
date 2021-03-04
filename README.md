@@ -97,6 +97,15 @@ Arguments:
 
 ## Optional Usage
 
+### Should the SDK ask the user for Contacts permissions?
+
+By default, the SDK does nothing if the app didn't acquire the user's permission to access Contacts.  
+You can let the SDK handle requesting permissions from the user when necessary, by changing its `permissionMode`:
+
+```swift
+PicUpSDK.shared.permissionMode = .internal
+```
+
 ### Disable the SDK or enable it back:
 
 ```swift

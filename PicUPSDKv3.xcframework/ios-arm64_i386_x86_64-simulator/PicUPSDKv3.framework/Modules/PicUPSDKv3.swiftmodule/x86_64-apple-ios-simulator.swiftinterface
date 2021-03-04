@@ -44,6 +44,19 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
 }
 @_hasMissingDesignatedInitializers public class PicUpSDK {
   public static let shared: PicUPSDKv3.PicUpSDK
+  public enum PermissionMode {
+    case external
+    case `internal`
+    public static func == (a: PicUPSDKv3.PicUpSDK.PermissionMode, b: PicUPSDKv3.PicUpSDK.PermissionMode) -> Swift.Bool
+    public var hashValue: Swift.Int {
+      get
+    }
+    public func hash(into hasher: inout Swift.Hasher)
+  }
+  public var permissionMode: PicUPSDKv3.PicUpSDK.PermissionMode {
+    get
+    set
+  }
   public func isServiceEnabled() -> Swift.Bool
   public func enableService()
   public func disableService()
@@ -54,3 +67,5 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
 extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
 extension PicUPSDKv3.ErrorNo : Swift.Hashable {}
 extension PicUPSDKv3.ErrorNo : Swift.RawRepresentable {}
+extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Equatable {}
+extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Hashable {}
