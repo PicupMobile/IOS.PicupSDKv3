@@ -23,8 +23,6 @@ Your app needs to have Contacts permission from the user, as described [here](ht
 
 ## Installation
 
-The recommended way to install PicUP SDK is using [CocoaPods](https://www.cocoapods.org/), but you can also download and install manually.
-
 ### CocoaPods
 
 Add the following line to your Podfile:
@@ -38,6 +36,14 @@ Then run:
 ```
 pod install
 ```
+
+### Swift Package Manager
+
+Navigate to the Swift packages section in your project, add a new package, enter
+
+`https://github.com/PicupMobile/IOS.PicupSDKv3`
+
+and click "Next".
 
 ### Manual
 
