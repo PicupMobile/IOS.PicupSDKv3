@@ -15,8 +15,4 @@ Pod::Spec.new do |s|
     s.vendored_frameworks = 'PicUPSDKv3.xcframework'
     s.preserve_paths =  'PicUPSDKv3.xcframework/*'
     s.source_files = 'PicUPSDKv3.xcframework/ios-arm64_armv7/PicUPSDKv3.framework/Headers/*.{h,m,swift}'
-
-    s.dependency 'Alamofire'
-    s.dependency 'CryptoSwift'
-    s.dependency 'DeviceKit'
 end

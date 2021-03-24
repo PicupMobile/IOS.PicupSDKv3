@@ -23,7 +23,7 @@ Your app needs to have Contacts permission from the user, as described [here](ht
 
 ## Installation
 
-The recommended way to install PicUP SDK is using [CocoaPods](https://www.cocoapods.org/).
+### CocoaPods
 
 Add the following line to your Podfile:
 
@@ -36,6 +36,22 @@ Then run:
 ```
 pod install
 ```
+
+### Swift Package Manager
+
+Navigate to the Swift packages section in your project, add a new package, enter
+
+`https://github.com/PicupMobile/IOS.PicupSDKv3`
+
+and click "Next".
+
+### Manual
+
+Download the latest version from [here](https://github.com/PicupMobile/IOS.PicupSDKv3/releases) and extract it. Copy **SDKFramework/PicUPSDKv3.framework** to your project by drag and dropping it into Xcode project navigator. When asked, choose to **Copy items if needed**:
+
+<p align="center">
+<img src="Screenshots/manual-install.png" height="280">
+</p>
 
 ## Initialization
 
@@ -96,6 +112,15 @@ Arguments:
 * **`completion`** Called when the registration is complete, with a `PicUpResult` parameter that contains optional error data.
 
 ## Optional Usage
+
+### Should the SDK ask the user for Contacts permissions?
+
+By default, the SDK does nothing if the app didn't acquire the user's permission to access Contacts.  
+You can let the SDK handle requesting permissions from the user when necessary, by changing its `permissionMode`:
+
+```swift
+PicUpSDK.shared.permissionMode = .internal
+```
 
 ### Disable the SDK or enable it back:
 
