@@ -30,10 +30,10 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   case CUSTOM_MSG
   case NO_INTERNET_CONNECTION
   public typealias RawValue = Swift.String
-  public init?(rawValue: Swift.String)
   public var rawValue: Swift.String {
     get
   }
+  public init?(rawValue: Swift.String)
   public typealias AllCases = [PicUPSDKv3.ErrorNo]
   public static var allCases: [PicUPSDKv3.ErrorNo] {
     get
@@ -54,17 +54,16 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
     get
     set
   }
+  public var isDebugMode: Swift.Bool {
+    get
+    set
+  }
   public func isServiceEnabled() -> Swift.Bool
   public func enableService()
   public func disableService()
   public func clearData()
   public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping (PicUPSDKv3.PicUpResult) -> Swift.Void)
   @objc deinit
-}
-public enum InternalPickUpSDK {
-  public static var deviceInfo: Swift.String {
-    get
-  }
 }
 extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
 extension PicUPSDKv3.ErrorNo : Swift.Hashable {}
