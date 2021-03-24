@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
     s.name = "PicUPSDKv3"
-    s.version = "2.2.0"
+    s.version = "2.2.1"
     s.summary = "PicUPSDKv3"
 
     s.homepage = 'https://picup.io'
-    s.license = { :type => 'MIT', :file => 'LICENSE' }
+    s.license = { :type => 'Copyright', :text => 'Copyright 2021 PicUP' }
     s.author = { 'PicUP' => 'contact@picup.io' }
 
     s.platform = :ios
