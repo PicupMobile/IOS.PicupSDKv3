@@ -111,6 +111,43 @@ Arguments:
 
 * **`completion`** Called when the registration is complete, with a `PicUpResult` parameter that contains optional error data.
 
+## Usage
+
+Call `register()` with the same arguments whenever the app becomes active. You can do that in one of several ways:
+
+1. For iOS 13 or later apps using scene-based lifecycle, in your `SceneDelegate`:
+
+```swift
+func sceneDidBecomeActive(_ scene: UIScene) {
+    PicUpSDK.shared.register(name, clientPhoneNumber: number, organizationCode: orgCode, securityCode: securityCode, uuid: token, completion: {_ in })
+}
+```
+
+1. For apps using the legacy lifecycle, in your `AppDelegate`:
+
+```swift
+func applicationDidBecomeActive(_ application: UIApplication) {
+    PicUpSDK.shared.register(name, clientPhoneNumber: number, organizationCode: orgCode, securityCode: securityCode, uuid: token, completion: {_ in })
+}
+```
+
+3. For any app, by observing `UIApplication.didBecomeActiveNotification`:
+
+```swift
+    ...
+    NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(updatePicUP),
+        name: UIApplication.didBecomeActiveNotification,
+        object: nil
+    )
+    ...
+
+@objc func updatePicUP() {
+    PicUpSDK.shared.register(name, clientPhoneNumber: number, organizationCode: orgCode, securityCode: securityCode, uuid: token, completion: {_ in })
+}
+```
+
 ## Optional Usage
 
 ### Should the SDK ask the user for Contacts permissions?
