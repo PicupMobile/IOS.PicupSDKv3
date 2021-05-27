@@ -19,7 +19,7 @@ By utilizing PicUP patented technology, PicUP client SDK enables rich digital co
 Your app needs to have Contacts permission from the user, as described [here](https://developer.apple.com/documentation/contacts/requesting_authorization_to_access_contacts):
 
 1. Add the required `NSContactsUsageDescription` key to your app’s `Info.plist` file, with a string that describes what your app does with the user’s contacts.
-2. _(Optional)_ Call `CNContactStore().requestAccess(for: CNEntityType.contacts) {...}` to request contacts access. (If you don't, the SDK will request access when you initialize it.)
+2. Call `CNContactStore().requestAccess(for: CNEntityType.contacts) {...}` to request contacts access. (Altrnatively, configure the SDK to request access as described below under O*ptional Usage*.)
 
 ## Installation
 
