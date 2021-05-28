@@ -65,8 +65,8 @@ import PicUPSDKv3
 PicUpSDK.shared.register(
     clientName,
     clientPhoneNumber: userPhoneNumber, // hashed - see below
-    organizationCode: organizationCode, // from management console
-    securityCode: securityCode, // from management console
+    organizationCode: organizationCode, // from the PicUP team
+    securityCode: securityCode, // from the PicUP team
     uuid: persistentUniqueString, // e.g. push token
     completion: { result in
         // ...
@@ -103,9 +103,9 @@ Arguments:
   }
   ```
 
-* **`organizationCode`** From the web management console.
+* **`organizationCode`** From the PicUP team.
 
-* **`securityCode`** From the web management console.
+* **`securityCode`** From the PicUP team.
 
 * **`uuid`** Persistent unique string, like push token or `UIDevice.current.identifierForVendor?.uuidString`.
 
@@ -182,8 +182,11 @@ To receive updates using silent push notifications:
 2. Create an push key:  
   Go to [https://developer.apple.com/account/resources/authkeys](https://developer.apple.com/account/resources/authkeys) and create a new APNS key. Download the key and save its Key ID.
 
-3. Upload the push key:  
-  Go to the PicUP management console, enter your app ID and key ID, and upload the key p8 file.
+3. Send push credentials to the PicUP team:  
+  * the key p8 file
+  * key ID
+  * app ID
+  * your Apple development team ID
 
 4. Ensure push entitlement:  
   Go to [https://developer.apple.com/account/resources/identifiers](https://developer.apple.com/account/resources/authkeys), click your app ID, and check **Push Notifications**.
@@ -200,10 +203,16 @@ To receive updates using silent push notifications:
   ```
 
 7. Pass the notification:  
-  In your `application(:didReceiveRemoteNotification:fetchCompletionHandler:)` call:
+  In your `AppDelegate` add:
 
   ```swift
-  PicUpSDK.shared.didReceiveMessage(userInfo: userInfo) { result in
-      completionHandler(.newData)
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if userInfo["sender"] as? String == "PicUpMobile" {
+            PicUpSDK.shared.didReceiveMessage(userInfo: userInfo) { result in
+                completionHandler(.newData)
+            }
+        } else {
+            completionHandler(.newData)
+        }
   }
   ```
