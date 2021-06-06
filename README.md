@@ -19,7 +19,7 @@ By utilizing PicUP patented technology, PicUP client SDK enables rich digital co
 Your app needs to have Contacts permission from the user, as described [here](https://developer.apple.com/documentation/contacts/requesting_authorization_to_access_contacts):
 
 1. Add the required `NSContactsUsageDescription` key to your app’s `Info.plist` file, with a string that describes what your app does with the user’s contacts.
-2. Call `CNContactStore().requestAccess(for: CNEntityType.contacts) {...}` to request contacts access. (Altrnatively, configure the SDK to request access as described below under O*ptional Usage*.)
+2. Call `CNContactStore().requestAccess(for: CNEntityType.contacts) {...}` to request contacts access. (Alternatively, configure the SDK to request access as described below under *Optional Usage*.)
 
 ## Installation
 
@@ -65,8 +65,8 @@ import PicUPSDKv3
 PicUpSDK.shared.register(
     clientName,
     clientPhoneNumber: userPhoneNumber, // hashed - see below
-    organizationCode: organizationCode, // from management console
-    securityCode: securityCode, // from management console
+    organizationCode: organizationCode, // from the PicUP team
+    securityCode: securityCode, // from the PicUP team
     uuid: persistentUniqueString, // e.g. push token
     completion: { result in
         // ...
@@ -103,11 +103,11 @@ Arguments:
   }
   ```
 
-* **`organizationCode`** From the web management console.
+* **`organizationCode`** From the PicUP team.
 
-* **`securityCode`** From the web management console.
+* **`securityCode`** From the PicUP team.
 
-* **`uuid`** Persistent unique string, like firebase token or `UIDevice.current.identifierForVendor?.uuidString`.
+* **`uuid`** Persistent unique string, like push token or `UIDevice.current.identifierForVendor?.uuidString`.
 
 * **`completion`** Called when the registration is complete, with a `PicUpResult` parameter that contains optional error data.
 
@@ -123,7 +123,7 @@ func sceneDidBecomeActive(_ scene: UIScene) {
 }
 ```
 
-1. For apps using the legacy lifecycle, in your `AppDelegate`:
+2. For apps using the legacy lifecycle, in your `AppDelegate`:
 
 ```swift
 func applicationDidBecomeActive(_ application: UIApplication) {
@@ -171,3 +171,48 @@ PicUpSDK.shared.enableService()
 ```swift
 PicUpSDK.shared.clearData()
 ```
+
+## Silent Push Notifications
+
+To receive updates using silent push notifications:
+
+1. Enable silent push:  
+  In Xcode click your **project**, select your app **target**, go to the **Signing & Capabilities** tab, add the **Background Modes** capability, then check the **Remote notifications** checkbox.
+
+2. Create an push key:  
+  Go to [https://developer.apple.com/account/resources/authkeys](https://developer.apple.com/account/resources/authkeys) and create a new APNS key. Download the key and save its Key ID.
+
+3. Send push credentials to the PicUP team:  
+  * the key p8 file
+  * key ID
+  * app ID
+  * your Apple development team ID
+
+4. Ensure push entitlement:  
+  Go to [https://developer.apple.com/account/resources/identifiers](https://developer.apple.com/account/resources/authkeys), click your app ID, and check **Push Notifications**.
+
+5. Register for remote notifications:  
+  In your `AppDelegate.application(:didFinishLaunchingWithOptions:)` call `application.registerForRemoteNotifications()`.
+
+6. Pass the push token:  
+  Save the push token you receive in `AppDelegate.application(:didRegisterForRemoteNotificationsWithDeviceToken deviceToken:)`. Alternatively, if you use Firebase Messaging, save `Messaging.apnsToken`. Then when you call `PicUpSDK.shared.register()`, pass the hex string of the token as the `uuid` argument:
+
+  ```swift
+  let tokenHexString = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
+  PicUpSDK.shared.register(name, clientPhoneNumber: number, organizationCode: orgCode, securityCode: securityCode, uuid: tokenHexString, completion: {_ in })
+  ```
+
+7. Pass the notification:  
+  In your `AppDelegate` add:
+
+  ```swift
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if userInfo["sender"] as? String == "PicUpMobile" {
+            PicUpSDK.shared.didReceiveMessage(userInfo: userInfo) { result in
+                completionHandler(.newData)
+            }
+        } else {
+            completionHandler(.newData)
+        }
+  }
+  ```
