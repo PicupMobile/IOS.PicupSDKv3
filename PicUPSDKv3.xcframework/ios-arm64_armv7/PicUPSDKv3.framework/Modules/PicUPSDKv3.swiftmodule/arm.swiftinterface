@@ -7,9 +7,15 @@ import Foundation
 import Swift
 import UIKit
 @objc @_inheritsConvenienceInitializers public class PicUpResult : ObjectiveC.NSObject {
-  public var errorNo: PicUPSDKv3.ErrorNo?
-  public var data: [Swift.String : Any]?
-  public var msg: Swift.String?
+  public var errorNo: PicUPSDKv3.ErrorNo? {
+    get
+  }
+  public var data: [Swift.String : Any]? {
+    get
+  }
+  public var msg: Swift.String? {
+    get
+  }
   @objc deinit
   @objc override dynamic public init()
 }
@@ -63,6 +69,7 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   public func disableService()
   public func clearData()
   public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping (PicUPSDKv3.PicUpResult) -> Swift.Void)
+  public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: ((PicUPSDKv3.PicUpResult) -> Swift.Void)? = nil)
   @objc deinit
 }
 extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
