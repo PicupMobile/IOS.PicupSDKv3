@@ -183,10 +183,8 @@ To receive updates using silent push notifications:
   Go to [https://developer.apple.com/account/resources/authkeys](https://developer.apple.com/account/resources/authkeys) and create a new APNS key. Download the key and save its Key ID.
 
 3. Send push credentials to the PicUP team:  
-  * the key p8 file
-  * key ID
-  * app ID
-  * your Apple development team ID
+  * APNS certificate p12 file and password (See [Apple's documentation](https://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apnshttps://developer.apple.com/documentation/usernotifications/setting_up_a_remote_notification_server/establishing_a_certificate-based_connection_to_apns))
+  * App ID
 
 4. Ensure push entitlement:  
   Go to [https://developer.apple.com/account/resources/identifiers](https://developer.apple.com/account/resources/authkeys), click your app ID, and check **Push Notifications**.
