@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.3.2 (swiftlang-1200.0.45 clang-1200.0.32.28)
+// swift-compiler-version: Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)
 // swift-module-flags: -target armv7-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name PicUPSDKv3
 import Contacts
 import Foundation
@@ -16,8 +16,8 @@ import UIKit
   public var msg: Swift.String? {
     get
   }
-  @objc deinit
   @objc override dynamic public init()
+  @objc deinit
 }
 public enum ErrorNo : Swift.String, Swift.CaseIterable {
   case ENOTSUP
@@ -35,13 +35,13 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   case NOT_SUPPORTED
   case CUSTOM_MSG
   case NO_INTERNET_CONNECTION
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
   public init?(rawValue: Swift.String)
   public typealias AllCases = [PicUPSDKv3.ErrorNo]
+  public typealias RawValue = Swift.String
   public static var allCases: [PicUPSDKv3.ErrorNo] {
+    get
+  }
+  public var rawValue: Swift.String {
     get
   }
 }
@@ -51,10 +51,10 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
     case external
     case `internal`
     public static func == (a: PicUPSDKv3.PicUpSDK.PermissionMode, b: PicUPSDKv3.PicUpSDK.PermissionMode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
     }
-    public func hash(into hasher: inout Swift.Hasher)
   }
   public var permissionMode: PicUPSDKv3.PicUpSDK.PermissionMode {
     get
