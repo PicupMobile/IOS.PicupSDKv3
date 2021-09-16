@@ -69,12 +69,14 @@ PicUpSDK.shared.register(
     securityCode: securityCode, // from the PicUP team
     uuid: persistentUniqueString, // e.g. push token
     completion: { result in
-        // ...
+        if result.errorNo != .ESUCCESS {
+            print("PicUP error \(result.errorNo?.rawValue ?? "") \(result.msg ?? "")")
+        }
     }
 )
 ```
 
-Arguments:
+### Arguments:
 
 * **`clientName`** String with name of the client organization.
 
@@ -110,6 +112,16 @@ Arguments:
 * **`uuid`** Persistent unique string, like push token or `UIDevice.current.identifierForVendor?.uuidString`.
 
 * **`completion`** Called when the registration is complete, with a `PicUpResult` parameter that contains optional error data.
+
+### Result:
+
+The completion result contains three fields:
+
+* **`result.errorNo`** `.ESUCCESS` for success, and an error code otherwise.
+
+* **`result.msg`** Optional description of error.
+
+* **`result.data`** Optional additional error data.
 
 ## Usage
 
