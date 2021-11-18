@@ -10,7 +10,7 @@ By utilizing PicUP patented technology, PicUP client SDK enables rich digital co
 * Give them a good reason to pick up. They definitely will.
 
 <p align="center">
-<img src="https://picup.io/wp-content/uploads/2020/06/pickap_a1-–-1-2.png" height="200">
+<img src="picup.png" height="200">
 </p>
 
 ## More Info
