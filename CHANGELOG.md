@@ -13,7 +13,7 @@
 ## [2.3.1]
 
 ### Fixed
-- fix decryption error.
+- fix occasional server-side decryption error.
 
 ## [2.3.0]
 
@@ -26,8 +26,6 @@
 
 ### Added
 - new card designs and configuration options.
-
-### Added
 - allow to disable service from either client or server, which will automatically clear all data.
 - add `permissionMode` that defaults to `external`. 
 - add `isDebugMode` and only print to the console when it's `true`, with "PicUP" prefix.
