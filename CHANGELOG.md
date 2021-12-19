@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.3.3]
+
+### Added
+- Allow testing silent push notifications in development environment.
+
 ## [2.3.2]
 
 ### Changed
