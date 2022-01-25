@@ -35,6 +35,7 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   case NOT_SUPPORTED
   case CUSTOM_MSG
   case NO_INTERNET_CONNECTION
+  case NO_CONTACTS_ACCESS
   public init?(rawValue: Swift.String)
   public typealias AllCases = [PicUPSDKv3.ErrorNo]
   public typealias RawValue = Swift.String
@@ -45,8 +46,33 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
     get
   }
 }
+public enum PicUpOptInResponse {
+  case preDetermined
+  case yes
+  case no
+  case notNow
+  public static func == (a: PicUPSDKv3.PicUpOptInResponse, b: PicUPSDKv3.PicUpOptInResponse) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum PicUpOptInTiming {
+  case anytime
+  case maximum(Swift.Int)
+  case onceEvery(Foundation.TimeInterval)
+}
+@_hasMissingDesignatedInitializers public class PicUpOptInAlert {
+  public typealias CompletionHandler = (PicUPSDKv3.PicUpOptInResponse) -> Swift.Void
+  public var timing: PicUPSDKv3.PicUpOptInTiming
+  public var showsWhenDisallowed: Swift.Bool
+  public func show(from: UIKit.UIViewController? = nil, completion: PicUPSDKv3.PicUpOptInAlert.CompletionHandler? = nil)
+  @objc deinit
+}
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PicUpSDK : ObjectiveC.NSObject {
   @objc public static let shared: PicUPSDKv3.PicUpSDK
+  final public let optIn: PicUPSDKv3.PicUpOptInAlert
+  public typealias CompletionHandler = (PicUPSDKv3.PicUpResult) -> Swift.Void
   public enum PermissionMode {
     case external
     case `internal`
@@ -60,6 +86,10 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
     get
     set
   }
+  public var showsOptIn: Swift.Bool {
+    get
+    set
+  }
   public var isDebugMode: Swift.Bool {
     get
     set
@@ -68,15 +98,17 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   public func enableService()
   public func disableService()
   public func clearData()
-  public func register(clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, pushToken: Foundation.Data? = nil, completion: ((PicUPSDKv3.PicUpResult) -> Swift.Void)? = nil)
+  public func register(clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, pushToken: Foundation.Data? = nil, completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
   @available(*, deprecated, renamed: "register(clientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:)", message: "uuid hex String argument changed to raw Data deviceToken")
-  public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping (PicUPSDKv3.PicUpResult) -> Swift.Void)
-  public func refresh()
-  public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: ((PicUPSDKv3.PicUpResult) -> Swift.Void)? = nil)
+  public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping PicUPSDKv3.PicUpSDK.CompletionHandler)
+  public func refresh(completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
+  public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
   @objc deinit
 }
 extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
 extension PicUPSDKv3.ErrorNo : Swift.Hashable {}
 extension PicUPSDKv3.ErrorNo : Swift.RawRepresentable {}
+extension PicUPSDKv3.PicUpOptInResponse : Swift.Equatable {}
+extension PicUPSDKv3.PicUpOptInResponse : Swift.Hashable {}
 extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Equatable {}
 extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Hashable {}

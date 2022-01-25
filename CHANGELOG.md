@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.4.0]
+
+### Added
+- Enable branded opt-in screen before asking user to grant Contacts access.
+- show "test version" banner when `testingMode` is 1.
+- add `refresh()` function to call from background fetch. 
+
 ## [2.3.3]
 
 ### Added
