@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.4.1]
+
+### Added
+- custom opt-in view.
+
 ## [2.4.0]
 
 ### Added

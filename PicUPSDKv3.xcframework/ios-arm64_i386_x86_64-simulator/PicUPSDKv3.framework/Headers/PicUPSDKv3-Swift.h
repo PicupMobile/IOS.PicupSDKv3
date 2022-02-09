@@ -219,6 +219,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@class UIButton;
+
+/// UIView with an <code>acceptButton</code> and a <code>declineButton</code>
+SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
+@protocol PicUpOptInView
+@property (nonatomic, readonly, strong) UIButton * _Nonnull acceptButton;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
+@end
+
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @interface PicUpResult : NSObject
@@ -475,6 +484,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+@class UIButton;
+
+/// UIView with an <code>acceptButton</code> and a <code>declineButton</code>
+SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
+@protocol PicUpOptInView
+@property (nonatomic, readonly, strong) UIButton * _Nonnull acceptButton;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
+@end
+
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @interface PicUpResult : NSObject
@@ -730,6 +748,15 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+
+@class UIButton;
+
+/// UIView with an <code>acceptButton</code> and a <code>declineButton</code>
+SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
+@protocol PicUpOptInView
+@property (nonatomic, readonly, strong) UIButton * _Nonnull acceptButton;
+@property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
+@end
 
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")

@@ -62,10 +62,15 @@ public enum PicUpOptInTiming {
   case maximum(Swift.Int)
   case onceEvery(Foundation.TimeInterval)
 }
+@objc public protocol PicUpOptInView {
+  @objc var acceptButton: UIKit.UIButton { get }
+  @objc var declineButton: UIKit.UIButton { get }
+}
 @_hasMissingDesignatedInitializers public class PicUpOptInAlert {
   public typealias CompletionHandler = (PicUPSDKv3.PicUpOptInResponse) -> Swift.Void
   public var timing: PicUPSDKv3.PicUpOptInTiming
   public var showsWhenDisallowed: Swift.Bool
+  public var customView: (UIKit.UIView & PicUPSDKv3.PicUpOptInView)?
   public func show(from: UIKit.UIViewController? = nil, completion: PicUPSDKv3.PicUpOptInAlert.CompletionHandler? = nil)
   @objc deinit
 }
