@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.4.2]
+
+### Added
+- Add option to describe contacts.
+- Respond to status requests.
+
 ## [2.4.1]
 
 ### Added
