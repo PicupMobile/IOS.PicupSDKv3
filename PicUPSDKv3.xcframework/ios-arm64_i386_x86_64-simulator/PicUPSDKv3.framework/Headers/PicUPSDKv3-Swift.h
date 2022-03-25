@@ -190,6 +190,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
 
@@ -214,12 +215,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpErrorNo, "ErrorNo", open) {
+  PicUpErrorNoENOTSUP = 0,
+  PicUpErrorNoEFAILED = 1,
+  PicUpErrorNoEABORTED = 2,
+  PicUpErrorNoENOTFOUND = 3,
+  PicUpErrorNoEBUSY = 4,
+  PicUpErrorNoEAVAIL = 5,
+  PicUpErrorNoEFORMAT = 6,
+  PicUpErrorNoEWRITE = 7,
+  PicUpErrorNoEREAD = 8,
+  PicUpErrorNoESTATE = 9,
+  PicUpErrorNoESUCCESS = 10,
+  PicUpErrorNoALREADY_REGISTERED = 11,
+  PicUpErrorNoNOT_SUPPORTED = 12,
+  PicUpErrorNoCUSTOM_MSG = 13,
+  PicUpErrorNoNO_INTERNET_CONNECTION = 14,
+  PicUpErrorNoNO_CONTACTS_ACCESS = 15,
+};
 
 
 
 
 
 
+
+
+@class NSNumber;
+@class UIView;
+@protocol PicUpOptInView;
+@class UIViewController;
+enum PicUpOptInResponse : NSInteger;
+
+SWIFT_CLASS("_TtC10PicUPSDKv315PicUpOptInAlert")
+@interface PicUpOptInAlert : NSObject
+/// Show opt-in when user previously disallowed Contacts access (default: true)
+@property (nonatomic) BOOL showsWhenDisallowed;
+/// Show custom view in opt-in screen
+@property (nonatomic, strong) UIView <PicUpOptInView> * _Nullable customView;
+/// Show opt-in screen before asking user to grant contacts permission
+- (void)showFrom:(UIViewController * _Nullable)from completion:(void (^ _Nullable)(enum PicUpOptInResponse))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Response to contacts permission opt-in alert
+typedef SWIFT_ENUM(NSInteger, PicUpOptInResponse, open) {
+/// Contacts permissions already determined - no opt-in alert shown
+  PicUpOptInResponsePreDetermined = 0,
+/// User agreed to be shown the system contacts permissions dialog
+  PicUpOptInResponseYes = 1,
+/// User declined the opt-in and was not shown the system contacts permissions dialog
+  PicUpOptInResponseNo = 2,
+/// The time to show the opt-in alert is not now - no opt-in alert shown
+  PicUpOptInResponseNotNow = 3,
+};
 
 @class UIButton;
 
@@ -230,20 +280,66 @@ SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
 @property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
 @end
 
+@class NSString;
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @interface PicUpResult : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) enum PicUpErrorNo errorNo;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable data;
+@property (nonatomic, readonly, copy) NSString * _Nullable msg;
+@property (nonatomic, readonly, copy) NSString * _Nonnull localizedDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum PicUpPermissionMode : NSInteger;
+@class NSData;
 
 SWIFT_CLASS("_TtC10PicUPSDKv38PicUpSDK")
 @interface PicUpSDK : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _Nonnull shared;)
 + (PicUpSDK * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, strong) PicUpOptInAlert * _Nonnull optIn;
+/// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
+@property (nonatomic) enum PicUpPermissionMode permissionMode;
+/// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
+/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
+@property (nonatomic) BOOL showsOptIn;
+@property (nonatomic) BOOL isDebugMode;
+- (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)enableService;
+- (void)disableService;
+- (void)clearData;
+/// Register to the PicUP service
+/// \param clientName Name of the client organization
+///
+/// \param clientPhoneNumber Hashed representation of the user phone number
+///
+/// \param organizationCode from the PicUP team
+///
+/// \param securityCode from the PicUP team
+///
+/// \param pushToken From <code>application:didRegisterForRemoteNotificationsWithDeviceToken</code> or Firebase <code>Messaging.apnsToken</code>
+///
+/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.errorNo</code> for errors, <code>.ESUCCESS</code> marks successful registration.
+///
+- (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+- (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+- (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
+/// \param userInfo The notification’s <code>userInfo</code>
+///
+/// \param completion Called after the notification data is processed. Use it to call <code>completionHandler(.newData)</code>.
+///
+- (void)didReceiveMessageWithUserInfo:(NSDictionary * _Nonnull)userInfo completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpPermissionMode, "PermissionMode", open) {
+  PicUpPermissionModeExternal = 0,
+  PicUpPermissionModeInternal = 1,
+};
 
 
 
@@ -457,6 +553,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
 
@@ -481,12 +578,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpErrorNo, "ErrorNo", open) {
+  PicUpErrorNoENOTSUP = 0,
+  PicUpErrorNoEFAILED = 1,
+  PicUpErrorNoEABORTED = 2,
+  PicUpErrorNoENOTFOUND = 3,
+  PicUpErrorNoEBUSY = 4,
+  PicUpErrorNoEAVAIL = 5,
+  PicUpErrorNoEFORMAT = 6,
+  PicUpErrorNoEWRITE = 7,
+  PicUpErrorNoEREAD = 8,
+  PicUpErrorNoESTATE = 9,
+  PicUpErrorNoESUCCESS = 10,
+  PicUpErrorNoALREADY_REGISTERED = 11,
+  PicUpErrorNoNOT_SUPPORTED = 12,
+  PicUpErrorNoCUSTOM_MSG = 13,
+  PicUpErrorNoNO_INTERNET_CONNECTION = 14,
+  PicUpErrorNoNO_CONTACTS_ACCESS = 15,
+};
 
 
 
 
 
 
+
+
+@class NSNumber;
+@class UIView;
+@protocol PicUpOptInView;
+@class UIViewController;
+enum PicUpOptInResponse : NSInteger;
+
+SWIFT_CLASS("_TtC10PicUPSDKv315PicUpOptInAlert")
+@interface PicUpOptInAlert : NSObject
+/// Show opt-in when user previously disallowed Contacts access (default: true)
+@property (nonatomic) BOOL showsWhenDisallowed;
+/// Show custom view in opt-in screen
+@property (nonatomic, strong) UIView <PicUpOptInView> * _Nullable customView;
+/// Show opt-in screen before asking user to grant contacts permission
+- (void)showFrom:(UIViewController * _Nullable)from completion:(void (^ _Nullable)(enum PicUpOptInResponse))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Response to contacts permission opt-in alert
+typedef SWIFT_ENUM(NSInteger, PicUpOptInResponse, open) {
+/// Contacts permissions already determined - no opt-in alert shown
+  PicUpOptInResponsePreDetermined = 0,
+/// User agreed to be shown the system contacts permissions dialog
+  PicUpOptInResponseYes = 1,
+/// User declined the opt-in and was not shown the system contacts permissions dialog
+  PicUpOptInResponseNo = 2,
+/// The time to show the opt-in alert is not now - no opt-in alert shown
+  PicUpOptInResponseNotNow = 3,
+};
 
 @class UIButton;
 
@@ -497,20 +643,66 @@ SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
 @property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
 @end
 
+@class NSString;
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @interface PicUpResult : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) enum PicUpErrorNo errorNo;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable data;
+@property (nonatomic, readonly, copy) NSString * _Nullable msg;
+@property (nonatomic, readonly, copy) NSString * _Nonnull localizedDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum PicUpPermissionMode : NSInteger;
+@class NSData;
 
 SWIFT_CLASS("_TtC10PicUPSDKv38PicUpSDK")
 @interface PicUpSDK : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _Nonnull shared;)
 + (PicUpSDK * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, strong) PicUpOptInAlert * _Nonnull optIn;
+/// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
+@property (nonatomic) enum PicUpPermissionMode permissionMode;
+/// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
+/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
+@property (nonatomic) BOOL showsOptIn;
+@property (nonatomic) BOOL isDebugMode;
+- (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)enableService;
+- (void)disableService;
+- (void)clearData;
+/// Register to the PicUP service
+/// \param clientName Name of the client organization
+///
+/// \param clientPhoneNumber Hashed representation of the user phone number
+///
+/// \param organizationCode from the PicUP team
+///
+/// \param securityCode from the PicUP team
+///
+/// \param pushToken From <code>application:didRegisterForRemoteNotificationsWithDeviceToken</code> or Firebase <code>Messaging.apnsToken</code>
+///
+/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.errorNo</code> for errors, <code>.ESUCCESS</code> marks successful registration.
+///
+- (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+- (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+- (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
+/// \param userInfo The notification’s <code>userInfo</code>
+///
+/// \param completion Called after the notification data is processed. Use it to call <code>completionHandler(.newData)</code>.
+///
+- (void)didReceiveMessageWithUserInfo:(NSDictionary * _Nonnull)userInfo completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpPermissionMode, "PermissionMode", open) {
+  PicUpPermissionModeExternal = 0,
+  PicUpPermissionModeInternal = 1,
+};
 
 
 
@@ -724,6 +916,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import Foundation;
 @import ObjectiveC;
 #endif
 
@@ -748,12 +941,61 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 
 
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpErrorNo, "ErrorNo", open) {
+  PicUpErrorNoENOTSUP = 0,
+  PicUpErrorNoEFAILED = 1,
+  PicUpErrorNoEABORTED = 2,
+  PicUpErrorNoENOTFOUND = 3,
+  PicUpErrorNoEBUSY = 4,
+  PicUpErrorNoEAVAIL = 5,
+  PicUpErrorNoEFORMAT = 6,
+  PicUpErrorNoEWRITE = 7,
+  PicUpErrorNoEREAD = 8,
+  PicUpErrorNoESTATE = 9,
+  PicUpErrorNoESUCCESS = 10,
+  PicUpErrorNoALREADY_REGISTERED = 11,
+  PicUpErrorNoNOT_SUPPORTED = 12,
+  PicUpErrorNoCUSTOM_MSG = 13,
+  PicUpErrorNoNO_INTERNET_CONNECTION = 14,
+  PicUpErrorNoNO_CONTACTS_ACCESS = 15,
+};
 
 
 
 
 
 
+
+
+@class NSNumber;
+@class UIView;
+@protocol PicUpOptInView;
+@class UIViewController;
+enum PicUpOptInResponse : NSInteger;
+
+SWIFT_CLASS("_TtC10PicUPSDKv315PicUpOptInAlert")
+@interface PicUpOptInAlert : NSObject
+/// Show opt-in when user previously disallowed Contacts access (default: true)
+@property (nonatomic) BOOL showsWhenDisallowed;
+/// Show custom view in opt-in screen
+@property (nonatomic, strong) UIView <PicUpOptInView> * _Nullable customView;
+/// Show opt-in screen before asking user to grant contacts permission
+- (void)showFrom:(UIViewController * _Nullable)from completion:(void (^ _Nullable)(enum PicUpOptInResponse))completion;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+/// Response to contacts permission opt-in alert
+typedef SWIFT_ENUM(NSInteger, PicUpOptInResponse, open) {
+/// Contacts permissions already determined - no opt-in alert shown
+  PicUpOptInResponsePreDetermined = 0,
+/// User agreed to be shown the system contacts permissions dialog
+  PicUpOptInResponseYes = 1,
+/// User declined the opt-in and was not shown the system contacts permissions dialog
+  PicUpOptInResponseNo = 2,
+/// The time to show the opt-in alert is not now - no opt-in alert shown
+  PicUpOptInResponseNotNow = 3,
+};
 
 @class UIButton;
 
@@ -764,20 +1006,66 @@ SWIFT_PROTOCOL("_TtP10PicUPSDKv314PicUpOptInView_")
 @property (nonatomic, readonly, strong) UIButton * _Nonnull declineButton;
 @end
 
+@class NSString;
 
 SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @interface PicUpResult : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly) enum PicUpErrorNo errorNo;
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable data;
+@property (nonatomic, readonly, copy) NSString * _Nullable msg;
+@property (nonatomic, readonly, copy) NSString * _Nonnull localizedDescription;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+enum PicUpPermissionMode : NSInteger;
+@class NSData;
 
 SWIFT_CLASS("_TtC10PicUPSDKv38PicUpSDK")
 @interface PicUpSDK : NSObject
 SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _Nonnull shared;)
 + (PicUpSDK * _Nonnull)shared SWIFT_WARN_UNUSED_RESULT;
+@property (nonatomic, readonly, strong) PicUpOptInAlert * _Nonnull optIn;
+/// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
+@property (nonatomic) enum PicUpPermissionMode permissionMode;
+/// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
+/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
+@property (nonatomic) BOOL showsOptIn;
+@property (nonatomic) BOOL isDebugMode;
+- (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
+- (void)enableService;
+- (void)disableService;
+- (void)clearData;
+/// Register to the PicUP service
+/// \param clientName Name of the client organization
+///
+/// \param clientPhoneNumber Hashed representation of the user phone number
+///
+/// \param organizationCode from the PicUP team
+///
+/// \param securityCode from the PicUP team
+///
+/// \param pushToken From <code>application:didRegisterForRemoteNotificationsWithDeviceToken</code> or Firebase <code>Messaging.apnsToken</code>
+///
+/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.errorNo</code> for errors, <code>.ESUCCESS</code> marks successful registration.
+///
+- (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+- (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+- (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
+/// \param userInfo The notification’s <code>userInfo</code>
+///
+/// \param completion Called after the notification data is processed. Use it to call <code>completionHandler(.newData)</code>.
+///
+- (void)didReceiveMessageWithUserInfo:(NSDictionary * _Nonnull)userInfo completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM_NAMED(NSInteger, PicUpPermissionMode, "PermissionMode", open) {
+  PicUpPermissionModeExternal = 0,
+  PicUpPermissionModeInternal = 1,
+};
 
 
 

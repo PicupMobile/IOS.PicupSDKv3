@@ -7,20 +7,23 @@ import Foundation
 @_exported import PicUPSDKv3
 import Swift
 import UIKit
-@objc @_inheritsConvenienceInitializers public class PicUpResult : ObjectiveC.NSObject {
-  public var errorNo: PicUPSDKv3.ErrorNo? {
+@objc @_hasMissingDesignatedInitializers @objcMembers public class PicUpResult : ObjectiveC.NSObject {
+  @objc public var errorNo: PicUPSDKv3.ErrorNo {
     get
   }
-  public var data: [Swift.String : Any]? {
+  @objc public var data: [Swift.String : Any]? {
     get
   }
-  public var msg: Swift.String? {
+  @objc public var msg: Swift.String? {
     get
+  }
+  @objc public var localizedDescription: Swift.String {
+    @objc get
   }
   @objc override dynamic public init()
   @objc deinit
 }
-public enum ErrorNo : Swift.String, Swift.CaseIterable {
+@objc(PicUpErrorNo) public enum ErrorNo : Swift.Int {
   case ENOTSUP
   case EFAILED
   case EABORTED
@@ -37,24 +40,25 @@ public enum ErrorNo : Swift.String, Swift.CaseIterable {
   case CUSTOM_MSG
   case NO_INTERNET_CONNECTION
   case NO_CONTACTS_ACCESS
-  public init?(rawValue: Swift.String)
-  public typealias AllCases = [PicUPSDKv3.ErrorNo]
-  public typealias RawValue = Swift.String
-  public static var allCases: [PicUPSDKv3.ErrorNo] {
-    get
-  }
-  public var rawValue: Swift.String {
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
 }
-public enum PicUpOptInResponse {
+extension ErrorNo : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+@objc public enum PicUpOptInResponse : Swift.Int {
   case preDetermined
   case yes
   case no
   case notNow
-  public static func == (a: PicUPSDKv3.PicUpOptInResponse, b: PicUPSDKv3.PicUpOptInResponse) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
     get
   }
 }
@@ -67,48 +71,49 @@ public enum PicUpOptInTiming {
   @objc var acceptButton: UIKit.UIButton { get }
   @objc var declineButton: UIKit.UIButton { get }
 }
-@_hasMissingDesignatedInitializers public class PicUpOptInAlert {
+@objc @_inheritsConvenienceInitializers @objcMembers public class PicUpOptInAlert : ObjectiveC.NSObject {
   public typealias CompletionHandler = (PicUPSDKv3.PicUpOptInResponse) -> Swift.Void
   public var timing: PicUPSDKv3.PicUpOptInTiming
-  public var showsWhenDisallowed: Swift.Bool
-  public var customView: (UIKit.UIView & PicUPSDKv3.PicUpOptInView)?
-  public func show(from: UIKit.UIViewController? = nil, completion: PicUPSDKv3.PicUpOptInAlert.CompletionHandler? = nil)
+  @objc public var showsWhenDisallowed: Swift.Bool
+  @objc public var customView: (UIKit.UIView & PicUPSDKv3.PicUpOptInView)?
+  @objc public func show(from: UIKit.UIViewController? = nil, completion: PicUPSDKv3.PicUpOptInAlert.CompletionHandler? = nil)
+  @objc override dynamic public init()
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class PicUpSDK : ObjectiveC.NSObject {
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers public class PicUpSDK : ObjectiveC.NSObject {
   @objc public static let shared: PicUPSDKv3.PicUpSDK
-  final public let optIn: PicUPSDKv3.PicUpOptInAlert
+  @objc final public let optIn: PicUPSDKv3.PicUpOptInAlert
   public typealias CompletionHandler = (PicUPSDKv3.PicUpResult) -> Swift.Void
-  public enum PermissionMode {
+  @objc(PicUpPermissionMode) public enum PermissionMode : Swift.Int {
     case external
     case `internal`
-    public static func == (a: PicUPSDKv3.PicUpSDK.PermissionMode, b: PicUPSDKv3.PicUpSDK.PermissionMode) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
       get
     }
   }
-  public var permissionMode: PicUPSDKv3.PicUpSDK.PermissionMode {
-    get
-    set
+  @objc public var permissionMode: PicUPSDKv3.PicUpSDK.PermissionMode {
+    @objc get
+    @objc set
   }
-  public var showsOptIn: Swift.Bool {
-    get
-    set
+  @objc public var showsOptIn: Swift.Bool {
+    @objc get
+    @objc set
   }
-  public var isDebugMode: Swift.Bool {
-    get
-    set
+  @objc public var isDebugMode: Swift.Bool {
+    @objc get
+    @objc set
   }
-  public func isServiceEnabled() -> Swift.Bool
-  public func enableService()
-  public func disableService()
-  public func clearData()
-  public func register(clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, pushToken: Foundation.Data? = nil, completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
-  @available(*, deprecated, renamed: "register(clientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:)", message: "uuid hex String argument changed to raw Data deviceToken")
+  @objc public func isServiceEnabled() -> Swift.Bool
+  @objc public func enableService()
+  @objc public func disableService()
+  @objc public func clearData()
+  @objc public func register(clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, pushToken: Foundation.Data? = nil, completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
+  @objc @available(*, deprecated, renamed: "register(clientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:)", message: "uuid hex String argument changed to raw Data deviceToken")
   public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping PicUPSDKv3.PicUpSDK.CompletionHandler)
-  public func refresh(completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
-  public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
+  @objc public func refresh(completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
+  @objc public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
   @objc deinit
 }
 extension PicUPSDKv3.ErrorNo : Swift.Equatable {}
@@ -116,5 +121,7 @@ extension PicUPSDKv3.ErrorNo : Swift.Hashable {}
 extension PicUPSDKv3.ErrorNo : Swift.RawRepresentable {}
 extension PicUPSDKv3.PicUpOptInResponse : Swift.Equatable {}
 extension PicUPSDKv3.PicUpOptInResponse : Swift.Hashable {}
+extension PicUPSDKv3.PicUpOptInResponse : Swift.RawRepresentable {}
 extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Equatable {}
 extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.Hashable {}
+extension PicUPSDKv3.PicUpSDK.PermissionMode : Swift.RawRepresentable {}
