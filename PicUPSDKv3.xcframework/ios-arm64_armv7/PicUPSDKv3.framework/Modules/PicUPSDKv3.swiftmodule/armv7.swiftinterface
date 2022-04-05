@@ -17,6 +17,9 @@ import UIKit
   @objc public var msg: Swift.String? {
     get
   }
+  @objc public var isSuccess: Swift.Bool {
+    @objc get
+  }
   @objc public var localizedDescription: Swift.String {
     @objc get
   }

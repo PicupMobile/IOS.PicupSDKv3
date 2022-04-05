@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = "PicUPSDKv3"
-    s.version = "2.4.3"
+    s.version = "2.4.4"
     s.summary = "PicUPSDKv3"
 
     s.homepage = 'https://picup.io'

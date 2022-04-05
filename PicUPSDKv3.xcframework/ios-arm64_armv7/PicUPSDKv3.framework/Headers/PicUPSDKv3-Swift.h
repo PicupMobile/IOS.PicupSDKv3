@@ -287,6 +287,7 @@ SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @property (nonatomic, readonly) enum PicUpErrorNo errorNo;
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable data;
 @property (nonatomic, readonly, copy) NSString * _Nullable msg;
+@property (nonatomic, readonly) BOOL isSuccess;
 @property (nonatomic, readonly, copy) NSString * _Nonnull localizedDescription;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -321,7 +322,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 ///
 /// \param pushToken From <code>application:didRegisterForRemoteNotificationsWithDeviceToken</code> or Firebase <code>Messaging.apnsToken</code>
 ///
-/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.errorNo</code> for errors, <code>.ESUCCESS</code> marks successful registration.
+/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.isSuccess</code> for successful registration and <code>result.localizedDescription</code> for error description.
 ///
 - (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
@@ -650,6 +651,7 @@ SWIFT_CLASS("_TtC10PicUPSDKv311PicUpResult")
 @property (nonatomic, readonly) enum PicUpErrorNo errorNo;
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable data;
 @property (nonatomic, readonly, copy) NSString * _Nullable msg;
+@property (nonatomic, readonly) BOOL isSuccess;
 @property (nonatomic, readonly, copy) NSString * _Nonnull localizedDescription;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -684,7 +686,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 ///
 /// \param pushToken From <code>application:didRegisterForRemoteNotificationsWithDeviceToken</code> or Firebase <code>Messaging.apnsToken</code>
 ///
-/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.errorNo</code> for errors, <code>.ESUCCESS</code> marks successful registration.
+/// \param completion Called when the registration is complete with a <code>result</code>. Check <code>result.isSuccess</code> for successful registration and <code>result.localizedDescription</code> for error description.
 ///
 - (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");

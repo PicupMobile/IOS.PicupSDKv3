@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.4.4]
+
+### Fixed
+- avoid rare opt-in popup on activating app.
+
 ## [2.4.3]
 
 ### Changed
