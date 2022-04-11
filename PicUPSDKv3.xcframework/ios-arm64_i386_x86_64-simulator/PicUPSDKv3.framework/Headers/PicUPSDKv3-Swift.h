@@ -304,7 +304,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 /// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
 @property (nonatomic) enum PicUpPermissionMode permissionMode;
 /// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
-/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
 @property (nonatomic) BOOL showsOptIn;
 @property (nonatomic) BOOL isDebugMode;
 - (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
@@ -668,7 +667,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 /// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
 @property (nonatomic) enum PicUpPermissionMode permissionMode;
 /// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
-/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
 @property (nonatomic) BOOL showsOptIn;
 @property (nonatomic) BOOL isDebugMode;
 - (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
@@ -1032,7 +1030,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 /// Should the  SDK ask the user for Contacts permissions (<code>internal</code> mode) or let the app handle that (<code>external</code> mode, the default).
 @property (nonatomic) enum PicUpPermissionMode permissionMode;
 /// Automatically show opt-in screen before asking for Contacts permission. (<code>false</code> by default)
-/// Only used when <code>permissionMode</code> is set to <code>.internal</code>.
 @property (nonatomic) BOOL showsOptIn;
 @property (nonatomic) BOOL isDebugMode;
 - (BOOL)isServiceEnabled SWIFT_WARN_UNUSED_RESULT;
