@@ -325,7 +325,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 ///
 - (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+/// Call from background fetch (either <code>application(_:performFetchWithCompletionHandler:)</code> or your <code>BGTaskScheduler</code> registered <code>launchHandler</code>)
 - (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Allow only images signed with your key.
+/// \param pemPublicKey An RSA public key, represented as PEM of Base64 string.
+///
+- (void)setImagesAuthenticationKeyWithPemPublicKey:(NSString * _Nonnull)pemPublicKey;
 /// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
 /// \param userInfo The notification’s <code>userInfo</code>
 ///
@@ -688,7 +693,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 ///
 - (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+/// Call from background fetch (either <code>application(_:performFetchWithCompletionHandler:)</code> or your <code>BGTaskScheduler</code> registered <code>launchHandler</code>)
 - (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Allow only images signed with your key.
+/// \param pemPublicKey An RSA public key, represented as PEM of Base64 string.
+///
+- (void)setImagesAuthenticationKeyWithPemPublicKey:(NSString * _Nonnull)pemPublicKey;
 /// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
 /// \param userInfo The notification’s <code>userInfo</code>
 ///
@@ -1051,7 +1061,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) PicUpSDK * _
 ///
 - (void)registerWithClientName:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode pushToken:(NSData * _Nullable)pushToken completion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
 - (void)register:(NSString * _Nonnull)clientName clientPhoneNumber:(NSString * _Nonnull)clientPhoneNumber organizationCode:(NSString * _Nonnull)organizationCode securityCode:(NSString * _Nonnull)securityCode uuid:(NSString * _Nonnull)uuid completion:(void (^ _Nonnull)(PicUpResult * _Nonnull))completion SWIFT_DEPRECATED_MSG("uuid hex String argument changed to raw Data deviceToken", "registerWithClientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:");
+/// Call from background fetch (either <code>application(_:performFetchWithCompletionHandler:)</code> or your <code>BGTaskScheduler</code> registered <code>launchHandler</code>)
 - (void)refreshWithCompletion:(void (^ _Nullable)(PicUpResult * _Nonnull))completion;
+/// Allow only images signed with your key.
+/// \param pemPublicKey An RSA public key, represented as PEM of Base64 string.
+///
+- (void)setImagesAuthenticationKeyWithPemPublicKey:(NSString * _Nonnull)pemPublicKey;
 /// Call this function in your AppDelegate’s <code>application(_:didReceiveRemoteNotification:fetchCompletionHandler:)</code>
 /// \param userInfo The notification’s <code>userInfo</code>
 ///

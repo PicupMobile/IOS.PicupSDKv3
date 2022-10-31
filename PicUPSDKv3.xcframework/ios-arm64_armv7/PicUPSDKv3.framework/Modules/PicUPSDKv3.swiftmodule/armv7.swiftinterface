@@ -5,6 +5,7 @@ import CallKit
 import Contacts
 import Foundation
 @_exported import PicUPSDKv3
+import Security
 import Swift
 import UIKit
 @objc @_hasMissingDesignatedInitializers @objcMembers public class PicUpResult : ObjectiveC.NSObject {
@@ -121,6 +122,7 @@ public enum PicUpOptInTiming {
   @objc @available(*, deprecated, renamed: "register(clientName:clientPhoneNumber:organizationCode:securityCode:pushToken:completion:)", message: "uuid hex String argument changed to raw Data deviceToken")
   public func register(_ clientName: Swift.String, clientPhoneNumber: Swift.String, organizationCode: Swift.String, securityCode: Swift.String, uuid: Swift.String, completion: @escaping PicUPSDKv3.PicUpSDK.CompletionHandler)
   @objc public func refresh(completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
+  @objc public func setImagesAuthenticationKey(pemPublicKey: Swift.String)
   @objc public func didReceiveMessage(userInfo: [Swift.AnyHashable : Any], completion: PicUPSDKv3.PicUpSDK.CompletionHandler? = nil)
   @objc deinit
 }

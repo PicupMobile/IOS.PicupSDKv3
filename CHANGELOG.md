@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.5.0]
+
+### Added
+- Add image signature verification.
+- Contact expiration improvements.
+- Allow multiple organization to co-exist on the same user device.
+
+### Fixed
+- iOS 16 improvements.
+- Reduce network requests.
+
 ## [2.4.5]
 
 ### Changed
