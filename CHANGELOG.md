@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.5.1]
+
+### Changed
+- Allow to get existing signature verification key.
+
 ## [2.5.0]
 
 ### Added
