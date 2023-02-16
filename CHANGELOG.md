@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.2]
+
+### Added
+- Add setting to use all numbers, specific number, or campaign numbers (default).
+
+### Fixed
+- Move prolonged actions off the main thread.
+
 ## [2.5.1]
 
 ### Changed
