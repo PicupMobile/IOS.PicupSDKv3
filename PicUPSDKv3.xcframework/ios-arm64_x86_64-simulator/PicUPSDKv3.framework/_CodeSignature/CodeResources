@@ -14,7 +14,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		Q6s2o4LqX3DJBX3vSbPHExjYxC8=
+		/rAZsY7GH1MYuqj6b0qip9X7LDM=
 		</data>
 		<key>Modules/PicUPSDKv3.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -43,6 +43,10 @@
 		<key>Modules/module.modulemap</key>
 		<data>
 		PwIlbTeSyZOXvvAYHIG0jR63rZY=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		fMRGZE/TkmgoBeHj1t0QAqzJBNs=
 		</data>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
@@ -166,6 +170,17 @@
 			<key>hash2</key>
 			<data>
 			YXlyEvrtn/AcNAIBvuj4Y6asR8H+HpOTUsT8wG3ryu8=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			fMRGZE/TkmgoBeHj1t0QAqzJBNs=
+			</data>
+			<key>hash2</key>
+			<data>
+			UisXvPKl+fIxC0Ybw+M2BEFGWyGAZLDsffpUYYZhpJY=
 			</data>
 		</dict>
 		<key>en.lproj/Localizable.strings</key>

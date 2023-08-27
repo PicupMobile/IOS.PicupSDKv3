@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.5.3]
+
+### Added
+- Add privacy manifest.
+
 ## [2.5.2]
 
 ### Added
